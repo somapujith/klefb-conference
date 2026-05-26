@@ -63,7 +63,7 @@ export function TimelineSection() {
           <p className="text-slate-400 mb-6 font-sans text-xs">
             More details coming soon. Stay tuned for updates.
           </p>
-          <Button href="/submission" variant="primary">
+          <Button href="/call-for-papers" variant="primary">
             Submit Your Paper
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>

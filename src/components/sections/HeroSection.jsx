@@ -71,7 +71,7 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button href="/submission" variant="primary" testId="button-hero-cfp">
+            <Button href="/call-for-papers" variant="primary" testId="button-hero-cfp">
               Submit Research
               <svg
                 xmlns="http://www.w3.org/2000/svg"

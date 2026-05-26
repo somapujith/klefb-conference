@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm list *)"
+      "Bash(npm list *)",
+      "Bash(Select-String \"Local:\" -Context 0,5)",
+      "Bash(Start-Sleep -Seconds 5)",
+      "Bash(curl -s http://localhost:5173/about)",
+      "Bash(curl -s http://localhost:5175/about)"
     ]
   }
 }
