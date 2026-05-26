@@ -4,7 +4,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/60 backdrop-blur-xl supports-[backdrop-filter]:bg-white/40 overflow-hidden text-slate-900">
       <div className="container mx-auto px-7 h-20 flex items-center justify-between">
-        <div>
+        <div className="flex-shrink-0">
           <a
             href="/"
             className="flex items-center gap-2 group"
@@ -12,23 +12,26 @@ export function Header() {
           >
             <img
               alt="KL University"
-              className="h-10 w-auto object-contain"
+              className="h-14 w-auto object-contain"
               src="/klh.png"
             />
           </a>
         </div>
 
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex flex-1 items-center justify-center gap-10">
           {NAV_LINKS.slice(0, -1).map((link) => (
             <a
               key={link.href}
               href={link.href}
               data-testid={link.testId}
-              className="text-sm font-medium transition-colors text-slate-500 hover:text-slate-900"
+              className="text-sm font-bold transition-colors text-slate-500 hover:text-blue-600"
             >
               {link.label}
             </a>
           ))}
+        </nav>
+
+        <div className="flex-shrink-0">
           <a
             href="/submission"
             data-testid="button-register"
@@ -36,7 +39,7 @@ export function Header() {
           >
             Register Now
           </a>
-        </nav>
+        </div>
 
         <button
           className="md:hidden p-2 text-foreground rounded-lg hover:bg-accent transition-colors"

@@ -59,7 +59,7 @@ export function Footer() {
       </div>
 
       <div className="container mx-auto px-4 mt-12 pt-8 border-t border-border/50 text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
-        <p>© 2027 KL University. All rights reserved.</p>
+        <p>© 2026 KL University. All rights reserved.</p>
         <div className="flex gap-4 mt-4 md:mt-0">
           <a href="#" className="hover:text-slate-900 transition-colors">
             Privacy Policy
