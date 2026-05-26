@@ -1,44 +1,72 @@
-import { Calendar } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
+import { Button } from '../ui/Button';
+
+const TIMELINE_EVENTS = [
+  {
+    title: 'Paper Submission Opens',
+    description: 'Share your groundbreaking research in AI, advanced computing systems, and sustainable technology with our global community.',
+  },
+  {
+    title: 'Paper Submission Deadline',
+    description: 'Submit your complete research papers through our secure online portal with all required documentation.',
+  },
+  {
+    title: 'Notification of Acceptance',
+    description: 'Receive detailed peer review feedback and acceptance decisions from our expert review committee.',
+  },
+  {
+    title: 'Camera Ready & Registration',
+    description: 'Prepare final camera-ready versions of your papers and complete your conference registration.',
+  },
+  {
+    title: 'Conference Dates',
+    description: 'Join us at KL University for three days of keynotes, presentations, networking, and collaborative workshops.',
+  },
+];
 
 export function TimelineSection() {
   return (
-    <section className="py-32 bg-slate-950 relative overflow-hidden z-10">
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] opacity-30"></div>
-        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] opacity-20"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_0%,transparent_100%)]"></div>
-      </div>
-
-      <div className="container mx-auto px-4 max-w-5xl relative z-10">
-        <div className="bg-slate-900/60 backdrop-blur-2xl rounded-[2.5rem] p-12 border border-slate-800 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -mr-32 -mt-32 blur-[60px] group-hover:bg-primary/20 transition-all duration-700"></div>
-
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-4">
-            <h3 className="text-3xl font-bold text-white flex items-center gap-3" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
-              <Calendar className="text-primary h-8 w-8" aria-hidden="true" />
-              Event Timeline
-            </h3>
-            <div className="text-sm font-semibold text-primary uppercase tracking-widest bg-primary/10 border border-primary/20 px-5 py-2 rounded-full shadow-inner">
-              AIQSEC 2027
+    <section className="py-20 md:py-24 bg-white border-t border-slate-200">
+      <div className="container mx-auto px-6 max-w-3xl">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 mb-16">
+          <div className="flex items-center gap-4">
+            <div className="h-12 w-12 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-700">
+              <Calendar className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900 font-sans">Event Timeline</h2>
+              <p className="text-xs text-slate-500 font-sans mt-0.5">Key milestones for AIQSEC 2027</p>
             </div>
           </div>
-
-          <div className="space-y-6 relative">
-            <div className="flex justify-between items-center group/item p-6 rounded-2xl hover:bg-slate-800/80 border border-transparent hover:border-slate-700/50 transition-all duration-300">
-              <div className="flex items-center gap-6">
-                <div className="w-3 h-3 rounded-full shadow-[0_0_15px_rgba(var(--primary),0.5)] bg-primary animate-pulse"></div>
-                <div>
-                  <h4 className="text-xl font-bold text-slate-200 group-hover/item:text-primary transition-colors">
-                    Important Dates
-                  </h4>
-                  <p className="text-sm text-slate-400 uppercase tracking-widest mt-1 font-medium">Event Timeline</p>
-                </div>
-              </div>
-              <span className="font-mono text-lg px-6 py-2.5 rounded-xl transition-all duration-300 shadow-md bg-primary text-white border-primary shadow-primary/20">
-                Coming Soon
-              </span>
-            </div>
+          <div className="inline-flex items-center rounded-full bg-slate-100 border border-slate-200 px-4 py-1.5">
+            <span className="text-xs font-semibold text-slate-600 font-sans">AIQSEC 2027</span>
           </div>
+        </div>
+
+        <div className="space-y-4">
+          {TIMELINE_EVENTS.map((event, index) => (
+            <div
+              key={index}
+              className="bg-slate-50/50 border border-slate-200/80 rounded-xl p-6 transition-all duration-200 hover:bg-slate-50 hover:border-slate-300 hover:shadow-sm"
+            >
+              <h3 className="text-base font-semibold text-slate-900 font-sans mb-1.5">
+                {event.title}
+              </h3>
+              <p className="text-slate-500 leading-relaxed text-sm font-sans font-light">
+                {event.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-slate-400 mb-6 font-sans text-xs">
+            More details coming soon. Stay tuned for updates.
+          </p>
+          <Button href="/submission" variant="primary">
+            Submit Your Paper
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </div>
     </section>

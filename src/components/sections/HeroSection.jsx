@@ -96,12 +96,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-slate-400 hidden md:block">
-        <div className="w-6 h-10 border-2 border-slate-200 rounded-full flex justify-center p-1">
-          <div className="w-1 h-2 bg-primary rounded-full"></div>
-        </div>
-      </div>
     </section>
   );
 }

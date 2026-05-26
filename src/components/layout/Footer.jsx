@@ -24,7 +24,7 @@ export function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-slate-900 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -40,7 +40,7 @@ export function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
+                  className="text-muted-foreground hover:text-slate-900 transition-colors"
                 >
                   {link.label}
                 </a>
@@ -61,10 +61,10 @@ export function Footer() {
       <div className="container mx-auto px-4 mt-12 pt-8 border-t border-border/50 text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
         <p>© 2027 KL University. All rights reserved.</p>
         <div className="flex gap-4 mt-4 md:mt-0">
-          <a href="#" className="hover:text-primary transition-colors">
+          <a href="#" className="hover:text-slate-900 transition-colors">
             Privacy Policy
           </a>
-          <a href="#" className="hover:text-primary transition-colors">
+          <a href="#" className="hover:text-slate-900 transition-colors">
             Terms of Service
           </a>
         </div>
