@@ -87,7 +87,7 @@ export function Committee() {
       <section className="pt-40 pb-24 md:pt-48 md:pb-32 px-4 bg-gradient-to-b from-white to-slate-50/50">
         <div className="container mx-auto max-w-5xl text-center">
           <h1 className="heading-large text-5xl md:text-7xl font-bold text-slate-900 mb-6 tracking-tight">
-            Conference <span className="text-blue-600 italic font-serif font-medium tracking-normal">Committee</span>
+            Conference <span className="text-blue-600">Committee</span>
           </h1>
           <p className="subheading-large text-slate-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Meet the distinguished professionals organizing AIQSEC 2026.
