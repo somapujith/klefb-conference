@@ -1,4 +1,5 @@
 import { NAV_LINKS } from '../../constants/navigation';
+import './Header.css';
 
 export function Header() {
   return (
@@ -35,7 +36,7 @@ export function Header() {
           <a
             href="/call-for-papers"
             data-testid="button-register"
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-blue-600 hover:bg-blue-700 px-5 text-xs font-semibold text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            className="register-btn"
           >
             Register Now
           </a>

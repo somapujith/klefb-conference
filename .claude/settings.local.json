@@ -5,7 +5,12 @@
       "Bash(Select-String \"Local:\" -Context 0,5)",
       "Bash(Start-Sleep -Seconds 5)",
       "Bash(curl -s http://localhost:5173/about)",
-      "Bash(curl -s http://localhost:5175/about)"
+      "Bash(curl -s http://localhost:5175/about)",
+      "Bash(grep -o \"h1,h2,h3,h4,h5,h6{[^}]*font-family[^}]*}\" \"h:\\\\KLH\\\\ieee\\\\website\\\\src\\\\index.css\")",
+      "Bash(powershell -NoProfile -Command \"\\(Get-Content 'h:\\\\KLH\\\\ieee\\\\website\\\\src\\\\index.css'\\) -replace 'font-family:Merriweather,serif', 'font-family:Helvetica, Arial, sans-serif' | Set-Content 'h:\\\\KLH\\\\ieee\\\\website\\\\src\\\\index.css' -Encoding utf8\")",
+      "Bash(copy \"h:\\\\KLH\\\\ieee\\\\website\\\\PhotoshopExtension_Image \\(9\\).png\" \"h:\\\\KLH\\\\ieee\\\\website\\\\public\\\\assets\\\\kl-university-institution.png\")",
+      "PowerShell(Copy-Item \"h:\\\\KLH\\\\ieee\\\\website\\\\PhotoshopExtension_Image \\(9\\).png\" \"h:\\\\KLH\\\\ieee\\\\website\\\\public\\\\assets\\\\kl-university-institution.png\")",
+      "Bash(Start-Sleep -Seconds 8)"
     ]
   }
 }

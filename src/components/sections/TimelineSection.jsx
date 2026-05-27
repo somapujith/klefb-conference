@@ -34,7 +34,7 @@ export function TimelineSection() {
               <Calendar className="h-6 w-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-slate-900 font-sans">Event Timeline</h2>
+              <h2 className="text-xl font-bold text-slate-900 font-sans" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>Event Timeline</h2>
               <p className="text-xs text-slate-500 font-sans mt-0.5">Key milestones for AIQSEC 2027</p>
             </div>
           </div>

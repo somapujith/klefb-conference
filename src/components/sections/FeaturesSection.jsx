@@ -27,7 +27,7 @@ export function FeaturesSection() {
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 block mb-3">
             Why Attend
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4 font-sans">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl mb-4 font-sans" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>
             Advancing Research Globally
           </h2>
           <p className="text-base text-slate-500 leading-relaxed font-light">

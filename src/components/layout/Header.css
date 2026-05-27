@@ -1,0 +1,47 @@
+/* Register Now Button - From Uiverse.io */
+.register-btn {
+  --color: #2563eb;
+  font-family: inherit;
+  display: inline-block;
+  padding: 0 1.2em;
+  height: 2.6em;
+  line-height: 2.6em;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border: 2px solid var(--color);
+  transition: color 0.5s;
+  z-index: 1;
+  font-size: 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: var(--color);
+  text-decoration: none;
+}
+
+.register-btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--color);
+  height: 150px;
+  width: 200px;
+  border-radius: 50%;
+  top: 100%;
+  left: 100%;
+  transition: all 0.7s;
+}
+
+.register-btn:hover {
+  color: #fff;
+}
+
+.register-btn:hover::before {
+  top: -30px;
+  left: -30px;
+}
+
+.register-btn:active::before {
+  background: #1d4ed8;
+  transition: background 0s;
+}
