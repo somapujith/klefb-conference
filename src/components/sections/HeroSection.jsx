@@ -59,7 +59,7 @@ export function HeroSection() {
 
           <h1
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-slate-900 mb-8 leading-[0.95]"
-            style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <span className="whitespace-nowrap">The Next Era of</span><br />
             <span className="text-primary">Advanced Computing</span>

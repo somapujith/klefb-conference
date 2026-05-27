@@ -52,7 +52,7 @@ export function Footer() {
         <div>
           <h4 className="font-semibold text-foreground mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>Contact</h4>
           <ul className="space-y-2 text-sm">
-            <li className="text-muted-foreground">contact@kluniversity.in</li>
+            <li className="text-muted-foreground">aiqsec.connect@gmail.com</li>
             <li className="text-muted-foreground">KL University, Bachupally</li>
           </ul>
         </div>
