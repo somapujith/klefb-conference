@@ -1,0 +1,168 @@
+/* Typography Theme System - CSS Variables */
+
+:root {
+  /* Headings - Montserrat Bold */
+  --typography-heading-large: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  };
+
+  --typography-heading-medium: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  };
+
+  --typography-heading-small: {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  };
+
+  /* Subheadings - Montserrat Regular */
+  --typography-subheading-large-font: 'Montserrat', sans-serif;
+  --typography-subheading-large-size: 24px;
+  --typography-subheading-large-weight: 400;
+  --typography-subheading-large-height: 1.4;
+
+  --typography-subheading-medium-font: 'Montserrat', sans-serif;
+  --typography-subheading-medium-size: 18px;
+  --typography-subheading-medium-weight: 400;
+  --typography-subheading-medium-height: 1.5;
+
+  /* Body Text - Montserrat Regular */
+  --typography-body-large-font: 'Montserrat', sans-serif;
+  --typography-body-large-size: 16px;
+  --typography-body-large-weight: 400;
+  --typography-body-large-height: 1.6;
+
+  --typography-body-medium-font: 'Montserrat', sans-serif;
+  --typography-body-medium-size: 14px;
+  --typography-body-medium-weight: 400;
+  --typography-body-medium-height: 1.5;
+
+  --typography-body-small-font: 'Montserrat', sans-serif;
+  --typography-body-small-size: 12px;
+  --typography-body-small-weight: 400;
+  --typography-body-small-height: 1.4;
+
+  /* Caption - Montserrat Regular */
+  --typography-caption-font: 'Montserrat', sans-serif;
+  --typography-caption-size: 10px;
+  --typography-caption-weight: 400;
+  --typography-caption-height: 1.3;
+
+  /* Bold Accents */
+  --typography-body-large-bold-font: 'Montserrat', sans-serif;
+  --typography-body-large-bold-size: 16px;
+  --typography-body-large-bold-weight: 600;
+  --typography-body-large-bold-height: 1.6;
+
+  /* Buttons - Montserrat SemiBold */
+  --typography-button-font: 'Montserrat', sans-serif;
+  --typography-button-size: 14px;
+  --typography-button-weight: 600;
+  --typography-button-height: 1.5;
+  --typography-button-spacing: 0.5px;
+
+  /* Labels - Montserrat Medium */
+  --typography-label-font: 'Montserrat', sans-serif;
+  --typography-label-size: 12px;
+  --typography-label-weight: 500;
+  --typography-label-height: 1.4;
+  --typography-label-spacing: 0.5px;
+}
+
+/* Helper Classes */
+.heading-large {
+  font-family: var(--typography-heading-large-font, 'Montserrat', sans-serif);
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.heading-medium {
+  font-family: var(--typography-heading-medium-font, 'Montserrat', sans-serif);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.heading-small {
+  font-family: var(--typography-heading-small-font, 'Montserrat', sans-serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.subheading-large {
+  font-family: var(--typography-subheading-large-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-subheading-large-size, 24px);
+  font-weight: var(--typography-subheading-large-weight, 400);
+  line-height: var(--typography-subheading-large-height, 1.4);
+}
+
+.subheading-medium {
+  font-family: var(--typography-subheading-medium-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-subheading-medium-size, 18px);
+  font-weight: var(--typography-subheading-medium-weight, 400);
+  line-height: var(--typography-subheading-medium-height, 1.5);
+}
+
+.body-large {
+  font-family: var(--typography-body-large-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-body-large-size, 16px);
+  font-weight: var(--typography-body-large-weight, 400);
+  line-height: var(--typography-body-large-height, 1.6);
+}
+
+.body-medium {
+  font-family: var(--typography-body-medium-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-body-medium-size, 14px);
+  font-weight: var(--typography-body-medium-weight, 400);
+  line-height: var(--typography-body-medium-height, 1.5);
+}
+
+.body-small {
+  font-family: var(--typography-body-small-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-body-small-size, 12px);
+  font-weight: var(--typography-body-small-weight, 400);
+  line-height: var(--typography-body-small-height, 1.4);
+  letter-spacing: 0.5px;
+}
+
+.caption {
+  font-family: var(--typography-caption-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-caption-size, 10px);
+  font-weight: var(--typography-caption-weight, 400);
+  line-height: var(--typography-caption-height, 1.3);
+  letter-spacing: 0.5px;
+}
+
+.button {
+  font-family: var(--typography-button-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-button-size, 14px);
+  font-weight: var(--typography-button-weight, 600);
+  line-height: var(--typography-button-height, 1.5);
+  letter-spacing: var(--typography-button-spacing, 0.5px);
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--typography-label-font, 'Montserrat', sans-serif);
+  font-size: var(--typography-label-size, 12px);
+  font-weight: var(--typography-label-weight, 500);
+  line-height: var(--typography-label-height, 1.4);
+  letter-spacing: var(--typography-label-spacing, 0.5px);
+  text-transform: uppercase;
+}
