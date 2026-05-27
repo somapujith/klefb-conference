@@ -45,3 +45,7 @@
   background: #1d4ed8;
   transition: background 0s;
 }
+
+.hover\:text-blue-600:hover {
+  color: #2563eb;
+}
