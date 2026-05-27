@@ -49,3 +49,7 @@
 .hover\:text-blue-600:hover {
   color: #2563eb;
 }
+
+.active-link {
+  color: #2563eb !important;
+}

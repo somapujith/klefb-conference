@@ -7,7 +7,7 @@ export function MainLayout({ children }) {
       <Header />
       <main id="main-content" className="flex-1 overflow-hidden">
         <div className="w-full">
-          <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-slate-50 text-slate-800">
+          <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-white text-slate-800">
             {children}
           </div>
         </div>

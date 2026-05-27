@@ -20,16 +20,21 @@ export function Header() {
         </div>
 
         <nav className="hidden md:flex flex-1 items-center justify-center gap-10">
-          {NAV_LINKS.slice(0, -1).map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              data-testid={link.testId}
-              className="text-sm font-bold transition-colors text-slate-500 hover:text-blue-600"
-            >
-              {link.label}
-            </a>
-          ))}
+          {NAV_LINKS.slice(0, -1).map((link) => {
+            const isActive = typeof window !== 'undefined' && window.location.pathname === link.href;
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                data-testid={link.testId}
+                className={`text-sm font-bold transition-colors hover:text-blue-600 ${
+                  isActive ? 'active-link' : 'text-slate-500'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex-shrink-0">

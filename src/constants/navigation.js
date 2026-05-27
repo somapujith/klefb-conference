@@ -9,6 +9,7 @@ export const NAV_LINKS = [
   { href: '/themes', label: 'Themes', testId: 'link-themes' },
   { href: '/sponsorship', label: 'Sponsorship', testId: 'link-sponsorship' },
   { href: '/contact', label: 'Contact', testId: 'link-contact' },
+  { href: '/404', label: '404', testId: 'link-404' },
 ];
 
 export const FOOTER_LINKS = {

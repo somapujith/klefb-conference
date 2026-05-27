@@ -10,7 +10,7 @@ import { Venue } from './pages/Venue';
 import { Themes } from './pages/Themes';
 import { Sponsorship } from './pages/Sponsorship';
 import { Contact } from './pages/Contact';
-
+import { NotFound } from './pages/NotFound';
 function App() {
   const pathname = window.location.pathname;
 
@@ -43,8 +43,15 @@ function App() {
     case '/contact':
       page = <Contact />;
       break;
+    case '/404':
+      page = <NotFound />;
+      break;
     default:
-      page = <Home />;
+      if (pathname === '/' || pathname === '/index.html') {
+        page = <Home />;
+      } else {
+        page = <NotFound />;
+      }
   }
 
   return (
