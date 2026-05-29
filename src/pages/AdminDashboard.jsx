@@ -36,7 +36,9 @@ export function AdminDashboard({ onLogout }) {
   const formatDate = (isoDate) => {
     if (!isoDate) return 'N/A';
     const date = new Date(isoDate);
-    return date.toLocaleString('en-IN', {
+    // Convert to IST (UTC+5:30)
+    const istTime = new Date(date.getTime() + 5.5 * 60 * 60 * 1000);
+    return istTime.toLocaleString('en-IN', {
       year: 'numeric',
       month: '2-digit',
       day: '2-digit',
@@ -44,6 +46,7 @@ export function AdminDashboard({ onLogout }) {
       minute: '2-digit',
       second: '2-digit',
       hour12: true,
+      timeZone: 'Asia/Kolkata',
     });
   };
 
