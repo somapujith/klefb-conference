@@ -1,8 +1,77 @@
 import { CreditCard, Check } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const REGISTRATION_STORAGE_KEY = 'aiqsec_registration_selections';
 
 export function Registration() {
-  const [region, setRegion] = useState('india');
+  const [region, setRegion] = useState(() => {
+    if (typeof window === 'undefined') return 'india';
+    const saved = localStorage.getItem(REGISTRATION_STORAGE_KEY);
+    return saved ? JSON.parse(saved).region : 'india';
+  });
+
+  const [selectedItems, setSelectedItems] = useState(() => {
+    if (typeof window === 'undefined') return [];
+    const saved = localStorage.getItem(REGISTRATION_STORAGE_KEY);
+    return saved ? JSON.parse(saved).items : [];
+  });
+
+  // Save selections to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem(REGISTRATION_STORAGE_KEY, JSON.stringify({ items: selectedItems, region }));
+  }, [selectedItems, region]);
+
+  const handleItemSelect = (itemName, itemPrice, isAddon = false) => {
+    setSelectedItems(prev => {
+      const exists = prev.find(item => item.name === itemName);
+
+      if (exists) {
+        // Remove if already selected
+        return prev.filter(item => item.name !== itemName);
+      } else {
+        if (isAddon) {
+          // Add-ons can be multiple
+          return [...prev, { name: itemName, price: itemPrice, isAddon: true }];
+        } else {
+          // Main categories are mutually exclusive - replace previous main category
+          const addOns = prev.filter(item => item.isAddon);
+          return [...addOns, { name: itemName, price: itemPrice, isAddon: false }];
+        }
+      }
+    });
+  };
+
+  const calculateTotal = () => {
+    if (selectedItems.length === 0) return '₹0';
+
+    const total = selectedItems.reduce((sum, item) => {
+      const priceStr = item.price.replace(/[₹$,]/g, '').trim();
+      return sum + parseFloat(priceStr);
+    }, 0);
+
+    const isCurrency = selectedItems[0].price.includes('$');
+    if (isCurrency) {
+      return `$${total.toFixed(2)}`;
+    } else {
+      return `₹${total.toLocaleString('en-IN', { maximumFractionDigits: 0 })}`;
+    }
+  };
+
+  const getMainCategory = () => selectedItems.find(item => !item.isAddon);
+  const getAddOns = () => selectedItems.filter(item => item.isAddon);
+
+  const handleProceedToPayment = () => {
+    const mainCategory = getMainCategory();
+    if (!mainCategory) {
+      alert('Please select a registration category (Student, Professional, or Attendee)');
+      return;
+    }
+
+    // Encode selected items
+    const encodedItems = encodeURIComponent(JSON.stringify(selectedItems));
+    const totalAmount = calculateTotal();
+    window.location.href = `/payment?items=${encodedItems}&total=${encodeURIComponent(totalAmount)}&region=${region}`;
+  };
 
   const pricingData = {
     india: {
@@ -121,25 +190,43 @@ export function Registration() {
 
               {/* Category Items Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {category.items.map((item, itemIdx) => (
-                  <div
-                    key={itemIdx}
-                    className="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-lg hover:border-blue-300 transition-all duration-200 cursor-pointer group"
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-                          {item.name}
-                        </h3>
+                {category.items.map((item, itemIdx) => {
+                  const isSelected = selectedItems.some(s => s.name === item.name);
+                  return (
+                    <div
+                      key={itemIdx}
+                      onClick={() => handleItemSelect(item.name, item.price, false)}
+                      className={`rounded-2xl p-6 transition-all duration-200 cursor-pointer group ${
+                        isSelected
+                          ? 'bg-blue-50 border-2 border-blue-600 shadow-lg'
+                          : 'bg-white border border-slate-200 hover:shadow-lg hover:border-blue-300'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <h3 className={`text-base font-semibold transition-colors ${
+                            isSelected ? 'text-blue-600' : 'text-slate-900 group-hover:text-blue-600'
+                          }`}>
+                            {item.name}
+                          </h3>
+                        </div>
+                        <div className="text-right flex-shrink-0">
+                          <p className={`text-2xl font-bold tabular-nums ${
+                            isSelected ? 'text-blue-600' : 'text-blue-600'
+                          }`}>
+                            {item.price}
+                          </p>
+                        </div>
                       </div>
-                      <div className="text-right flex-shrink-0">
-                        <p className="text-2xl font-bold text-blue-600 tabular-nums">
-                          {item.price}
-                        </p>
-                      </div>
+                      {isSelected && (
+                        <div className="mt-4 flex items-center gap-2 text-blue-600 font-semibold text-sm">
+                          <Check size={18} />
+                          Selected
+                        </div>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -152,21 +239,41 @@ export function Registration() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {currentData.addOns.map((addon, addonIdx) => (
-                <div
-                  key={addonIdx}
-                  className="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:shadow-md hover:border-slate-300 transition-all duration-200"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="text-base font-semibold text-slate-700">
-                      {addon.name}
-                    </h3>
-                    <p className="text-xl font-bold text-slate-600 tabular-nums flex-shrink-0">
-                      {addon.price}
-                    </p>
+              {currentData.addOns.map((addon, addonIdx) => {
+                const isSelected = selectedItems.some(s => s.name === addon.name);
+                return (
+                  <div
+                    key={addonIdx}
+                    onClick={() => handleItemSelect(addon.name, addon.price, true)}
+                    className={`rounded-2xl p-6 transition-all duration-200 cursor-pointer ${
+                      isSelected
+                        ? 'bg-blue-50 border-2 border-blue-600 shadow-lg'
+                        : 'bg-slate-50 border border-slate-200 hover:shadow-md hover:border-blue-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className={`text-base font-semibold ${
+                          isSelected ? 'text-blue-600' : 'text-slate-700'
+                        }`}>
+                          {addon.name}
+                        </h3>
+                      </div>
+                      <p className={`text-xl font-bold tabular-nums flex-shrink-0 ${
+                        isSelected ? 'text-blue-600' : 'text-slate-600'
+                      }`}>
+                        {addon.price}
+                      </p>
+                    </div>
+                    {isSelected && (
+                      <div className="mt-4 flex items-center gap-2 text-blue-600 font-semibold text-sm">
+                        <Check size={18} />
+                        Selected
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -185,8 +292,34 @@ export function Registration() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <a
-            href="/payment"
+          {getMainCategory() && (
+            <div className="mb-8 bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 max-w-2xl mx-auto">
+              <p className="text-sm font-semibold text-slate-600 mb-4 uppercase tracking-wide">Your Selection</p>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-3 border-b border-blue-100">
+                  <span className="text-base font-semibold text-slate-900">{getMainCategory().name}</span>
+                  <span className="text-xl font-bold text-blue-600">{getMainCategory().price}</span>
+                </div>
+                {getAddOns().length > 0 && (
+                  <>
+                    {getAddOns().map((addon, idx) => (
+                      <div key={idx} className="flex items-center justify-between text-slate-700">
+                        <span className="text-sm">+ {addon.name}</span>
+                        <span className="text-sm font-semibold text-slate-900">{addon.price}</span>
+                      </div>
+                    ))}
+                  </>
+                )}
+                <div className="flex items-center justify-between pt-3 border-t border-blue-200">
+                  <span className="text-base font-bold text-slate-900">Total Amount</span>
+                  <span className="text-2xl font-bold text-blue-600">{calculateTotal()}</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <button
+            onClick={handleProceedToPayment}
             className="inline-flex items-center gap-3 bg-white/30 text-black font-bold text-base px-12 py-4 rounded-full cursor-pointer transition-all duration-200 border border-black backdrop-blur-sm"
             style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.10)' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 36px rgba(0,0,0,0.15)'; }}
@@ -194,7 +327,7 @@ export function Registration() {
           >
             <CreditCard size={18} />
             Proceed to Payment
-          </a>
+          </button>
           <p className="text-xs text-slate-500 mt-8">Secure payment powered by your preferred gateway</p>
         </div>
       </div>
