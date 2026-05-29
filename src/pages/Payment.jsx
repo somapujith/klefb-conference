@@ -1,5 +1,6 @@
-import { CreditCard, Lock, ArrowLeft } from 'lucide-react';
+import { Lock, ArrowLeft, ShieldCheck, CheckCircle2, QrCode } from 'lucide-react';
 import { useState } from 'react';
+import './Payment.css';
 
 export function Payment() {
   const [formData, setFormData] = useState({
@@ -10,7 +11,7 @@ export function Payment() {
     email: '',
     phone: '',
     country: 'India',
-    paymentMethod: 'card',
+    paymentMethod: 'upi',
   });
 
   const [errors, setErrors] = useState({});
@@ -37,7 +38,6 @@ export function Payment() {
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
-      // Payment processing would happen here
       alert('Payment processing started. Redirecting to payment gateway...');
     } else {
       setErrors(newErrors);
@@ -45,9 +45,9 @@ export function Payment() {
   };
 
   const InputField = ({ label, name, type = 'text', required = true, placeholder = '' }) => (
-    <div className="space-y-2">
-      <label className="block text-sm font-semibold text-slate-900">
-        {label} {required && <span className="text-red-500">*</span>}
+    <div className="input-group">
+      <label className="input-label">
+        {label} {required && <span className="required">*</span>}
       </label>
       <input
         type={type}
@@ -55,203 +55,188 @@ export function Payment() {
         value={formData[name]}
         onChange={handleInputChange}
         placeholder={placeholder}
-        className={`w-full px-4 py-3 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-          errors[name]
-            ? 'border-red-500 bg-red-50'
-            : 'border-slate-200 bg-white hover:border-slate-300'
-        }`}
+        className={`input-field ${errors[name] ? 'error' : ''}`}
       />
-      {errors[name] && <p className="text-xs text-red-600">{errors[name]}</p>}
+      {errors[name] && <p className="error-msg">{errors[name]}</p>}
     </div>
   );
 
   return (
-    <div className="bg-gradient-to-b from-slate-50 to-white min-h-screen pb-20">
+    <div className="payment-page">
       {/* ── Header ── */}
-      <div className="pt-32 pb-12 text-center px-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-3">
-          Complete Payment
-        </h1>
-        <p className="text-base text-slate-600 max-w-2xl mx-auto">
-          Secure payment for AIQSEC 2026 registration
+      <div className="payment-header">
+        <h1 className="payment-title">Complete Your Registration</h1>
+        <p className="payment-subtitle">
+          Secure payment for AIQSEC 2026. Please review your details and complete the payment below.
         </p>
       </div>
 
       {/* ── Main Content ── */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-          {/* ── Order Summary (Left) ── */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 space-y-6">
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <h2 className="text-lg font-bold text-slate-900 mb-6">Order Summary</h2>
-
-                {/* Category */}
-                <div className="space-y-4 pb-6 border-b border-slate-200">
-                  <div>
-                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
-                      Registration Category
-                    </p>
-                    <p className="text-base font-semibold text-slate-900">
-                      {formData.category}
-                    </p>
-                  </div>
+      <div className="payment-content">
+        
+        {/* ── Payment Form (Left on Desktop) ── */}
+        <div className="payment-form-section">
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            
+            {/* Personal Information */}
+            <div className="payment-card">
+              <div style={{ marginBottom: '2rem' }}>
+                <h3 className="payment-card-title">Personal Information</h3>
+                <p className="payment-card-desc">Please ensure these details match your registration.</p>
+              </div>
+              
+              <div className="form-grid">
+                <div className="col-span-2">
+                  <InputField label="Full Name" name="fullName" placeholder="e.g. Jane Doe" />
                 </div>
-
-                {/* Price Breakdown */}
-                <div className="space-y-3 py-6 border-b border-slate-200">
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Registration Fee</span>
-                    <span className="font-semibold text-slate-900">{formData.amount}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-slate-600">Taxes & Fees</span>
-                    <span className="font-semibold text-slate-900">Included</span>
-                  </div>
-                </div>
-
-                {/* Total */}
-                <div className="flex justify-between items-center pt-6 mb-6">
-                  <span className="text-base font-bold text-slate-900">Total Amount</span>
-                  <span className="text-2xl font-bold text-blue-600">{formData.amount}</span>
-                </div>
-
-                {/* Security Badge */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3 flex items-start gap-3">
-                  <Lock className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs font-semibold text-green-900">Secure Payment</p>
-                    <p className="text-xs text-green-700">SSL encrypted & PCI compliant</p>
-                  </div>
-                </div>
-
-                {/* Back Button */}
-                <button
-                  onClick={() => window.history.back()}
-                  className="w-full mt-6 flex items-center justify-center gap-2 py-2 text-slate-600 hover:text-slate-900 transition-colors"
-                >
-                  <ArrowLeft size={16} />
-                  <span className="text-sm font-medium">Back to Registration</span>
-                </button>
+                <InputField label="Email Address" name="email" type="email" placeholder="jane@example.com" />
+                <InputField label="Phone Number" name="phone" type="tel" placeholder="+91 98765 43210" />
               </div>
             </div>
-          </div>
 
-          {/* ── Payment Form (Right) ── */}
-          <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
-
-              {/* Personal Information */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-900 mb-6">Personal Information</h3>
-                <div className="space-y-4">
-                  <InputField label="Full Name" name="fullName" placeholder="John Doe" />
-                  <InputField label="Email" name="email" type="email" placeholder="john@example.com" />
-                  <InputField label="Phone Number" name="phone" type="tel" placeholder="+91 9876543210" />
-                </div>
+            {/* Payment Method Selection */}
+            <div className="payment-card">
+              <div style={{ marginBottom: '2rem' }}>
+                <h3 className="payment-card-title">Payment Method</h3>
+                <p className="payment-card-desc">Select how you would like to pay.</p>
               </div>
 
-              {/* Payment Method Selection */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-slate-900 mb-6">Payment Method</h3>
-
-                <div className="space-y-3">
-                  {/* Card Payment */}
-                  <label className="relative flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-blue-300 transition-colors"
-                    style={{ borderColor: formData.paymentMethod === 'card' ? '#3b82f6' : '#e2e8f0' }}>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="card"
-                      checked={formData.paymentMethod === 'card'}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 text-blue-600"
-                    />
-                    <div className="ml-4">
-                      <p className="font-semibold text-slate-900">Credit / Debit Card</p>
-                      <p className="text-xs text-slate-500">Visa, Mastercard, American Express</p>
-                    </div>
-                  </label>
-
-                  {/* UPI Payment */}
-                  <label className="relative flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-blue-300 transition-colors">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="upi"
-                      checked={formData.paymentMethod === 'upi'}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 text-blue-600"
-                    />
-                    <div className="ml-4">
-                      <p className="font-semibold text-slate-900">UPI</p>
-                      <p className="text-xs text-slate-500">Google Pay, PhonePe, Paytm</p>
-                    </div>
-                  </label>
-
-                  {/* Net Banking */}
-                  <label className="relative flex items-center p-4 border-2 border-slate-200 rounded-xl cursor-pointer hover:border-blue-300 transition-colors">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="netbanking"
-                      checked={formData.paymentMethod === 'netbanking'}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 text-blue-600"
-                    />
-                    <div className="ml-4">
-                      <p className="font-semibold text-slate-900">Net Banking</p>
-                      <p className="text-xs text-slate-500">All major banks supported</p>
-                    </div>
-                  </label>
-                </div>
-              </div>
-
-              {/* Card Details (shown only when card is selected) */}
-              {formData.paymentMethod === 'card' && (
-                <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
-                  <h3 className="text-lg font-bold text-slate-900 mb-6">Card Details</h3>
-                  <div className="space-y-4">
-                    <InputField label="Card Number" name="cardNumber" placeholder="1234 5678 9012 3456" />
-                    <div className="grid grid-cols-2 gap-4">
-                      <InputField label="Expiry Date" name="expiryDate" placeholder="MM/YY" />
-                      <InputField label="CVV" name="cvv" placeholder="123" />
-                    </div>
-                    <InputField label="Cardholder Name" name="cardholderName" placeholder="John Doe" />
+              <div className="method-grid">
+                <label className={`method-label ${formData.paymentMethod === 'upi' ? 'selected' : ''}`}>
+                  <div className="method-header">
+                    <span className="method-title">UPI Transfer</span>
+                    {formData.paymentMethod === 'upi' && <CheckCircle2 className="method-icon" />}
                   </div>
-                </div>
-              )}
+                  <p className="method-desc">Google Pay, PhonePe, Paytm, etc.</p>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="upi"
+                    checked={formData.paymentMethod === 'upi'}
+                    onChange={handleInputChange}
+                    style={{ display: 'none' }}
+                  />
+                </label>
 
-              {/* Terms & Conditions */}
-              <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-                <label className="flex items-start gap-3 cursor-pointer">
-                  <input type="checkbox" defaultChecked className="w-5 h-5 text-blue-600 mt-0.5 rounded" />
-                  <span className="text-sm text-slate-700">
-                    I agree to the <a href="#" className="text-blue-600 font-semibold hover:underline">terms and conditions</a> and <a href="#" className="text-blue-600 font-semibold hover:underline">privacy policy</a>
-                  </span>
+                <label className={`method-label ${formData.paymentMethod === 'bank' ? 'selected' : ''}`}>
+                  <div className="method-header">
+                    <span className="method-title">Bank Transfer</span>
+                    {formData.paymentMethod === 'bank' && <CheckCircle2 className="method-icon" />}
+                  </div>
+                  <p className="method-desc">Direct NEFT/RTGS/IMPS to our account.</p>
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="bank"
+                    checked={formData.paymentMethod === 'bank'}
+                    onChange={handleInputChange}
+                    style={{ display: 'none' }}
+                  />
                 </label>
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-white/30 text-black font-bold text-base px-12 py-4 rounded-full cursor-pointer transition-all duration-200 border border-black backdrop-blur-sm flex items-center justify-center gap-3"
-                style={{ boxShadow: '0 4px 24px rgba(0,0,0,0.10)' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 36px rgba(0,0,0,0.15)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.10)'; }}
-              >
-                <CreditCard size={20} />
-                Complete Payment - {formData.amount}
+              {/* Conditional Payment Details */}
+              <div className="conditional-details">
+                {formData.paymentMethod === 'upi' && (
+                  <div className="qr-section">
+                    <div className="qr-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '130px', minHeight: '130px', background: '#f9fafb' }}>
+                      <QrCode size={64} color="#6b7280" />
+                    </div>
+                    <div className="qr-text-container">
+                      <h4>Scan to Pay</h4>
+                      <p>
+                        Open any UPI app on your phone and scan the QR code to complete the payment of <span>{formData.amount}</span>.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {formData.paymentMethod === 'bank' && (
+                  <div>
+                    <h4 className="bank-details-title">Bank Account Details</h4>
+                    <div className="bank-grid">
+                      <div>
+                        <p className="bank-item-label">Account Name</p>
+                        <p className="bank-item-value">IEEE AIQSEC Conference</p>
+                      </div>
+                      <div>
+                        <p className="bank-item-label">Account Number</p>
+                        <p className="bank-item-value font-mono">1234567890</p>
+                      </div>
+                      <div>
+                        <p className="bank-item-label">IFSC Code</p>
+                        <p className="bank-item-value font-mono">SBIN0001234</p>
+                      </div>
+                      <div>
+                        <p className="bank-item-label">Bank Name</p>
+                        <p className="bank-item-value">State Bank of India</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* Submit Button & Terms */}
+            <div className="submit-section">
+              <button type="submit" className="submit-btn">
+                <Lock size={18} className="submit-icon" />
+                Pay {formData.amount} Securely
               </button>
 
-              {/* Secure Info */}
-              <p className="text-xs text-slate-500 text-center">
-                Your payment is processed securely. No payment information is stored on our servers.
+              <p className="terms-text">
+                By clicking this button, you agree to our <a href="#" className="terms-link">Terms of Service</a> and <a href="#" className="terms-link">Privacy Policy</a>.
               </p>
-            </form>
+            </div>
+          </form>
+        </div>
+
+        {/* ── Order Summary (Right on Desktop) ── */}
+        <div className="order-summary-section">
+          <div className="summary-container payment-card">
+            <h2 className="summary-title">Order Summary</h2>
+
+            <div className="summary-row">
+              <div>
+                <p className="summary-label">{formData.category}</p>
+                <p className="summary-sublabel">Registration Fee</p>
+              </div>
+              <span className="summary-value">{formData.amount}</span>
+            </div>
+
+            <div className="summary-divider"></div>
+
+            <div className="summary-subtotal-row">
+              <span>Subtotal</span>
+              <span className="summary-subtotal-value">{formData.amount}</span>
+            </div>
+            <div className="summary-subtotal-row">
+              <span>Taxes & Fees</span>
+              <span className="summary-free">Included</span>
+            </div>
+
+            <div className="summary-divider"></div>
+
+            <div className="summary-total-row">
+              <span className="summary-total-label">Total</span>
+              <span className="summary-total-value">{formData.amount}</span>
+            </div>
+
+            <div className="secure-badge">
+              <ShieldCheck className="secure-icon" />
+              <p>Guaranteed safe & secure checkout</p>
+            </div>
+
+            <button
+              onClick={() => window.history.back()}
+              className="back-btn"
+            >
+              <ArrowLeft size={16} />
+              <span className="back-text">Back to details</span>
+            </button>
           </div>
         </div>
+
       </div>
     </div>
   );
