@@ -62,7 +62,7 @@ export function CallForPapers() {
           {/* Soft Badge */}
           <div className="inline-block mb-10">
             <span className="inline-flex items-center gap-2 bg-white text-slate-700 px-6 py-2.5 rounded-full border border-slate-200 uppercase tracking-widest text-[11px] font-bold shadow-sm">
-              AIQSEC 2026
+              AIQSEC 2027
             </span>
           </div>
           
@@ -100,7 +100,7 @@ export function CallForPapers() {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto rounded-full mb-16 opacity-20"></div>
           
           <p className="subheading-large text-slate-600 leading-[2] font-normal text-xl md:text-2xl">
-            AIQSEC 2026 focuses on industrial and upcoming frontier technologies, applications of electronics, controls, communications, instrumentation and computational intelligence. The objectives of the conference are to provide high quality research and professional interactions for the advancement of science, technology, and fellowship. Papers with new research results are encouraged for submission.
+            AIQSEC 2027 d focuses on industrial and upcoming frontier technologies, applications of electronics, controls, communications, instrumentation and computational intelligence. The objectives of the conference are to provide high quality research and professional interactions for the advancement of science, technology, and fellowship. Papers with new research results are encouraged for submission.
           </p>
         </div>
       </section>
