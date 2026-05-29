@@ -16,6 +16,8 @@ import { Registration } from './pages/Registration';
 import { Payment } from './pages/Payment';
 import { AdminLogin } from './pages/AdminLogin';
 import { AdminDashboard } from './pages/AdminDashboard';
+import { ToastProvider } from './context/ToastContext';
+import { Toast } from './components/ui/Toast';
 function App() {
   const pathname = window.location.pathname;
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
@@ -96,9 +98,12 @@ function App() {
   }
 
   return (
-    <MainLayout>
-      {page}
-    </MainLayout>
+    <ToastProvider>
+      <MainLayout>
+        {page}
+      </MainLayout>
+      <Toast />
+    </ToastProvider>
   );
 }
 

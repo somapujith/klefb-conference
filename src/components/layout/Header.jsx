@@ -15,11 +15,6 @@ export function Header() {
               className="h-14 w-auto object-contain"
               src="/klh.png"
             />
-            <img
-              alt="IEEE"
-              className="h-10 w-auto object-contain"
-              src="/ieee-logo.svg"
-            />
           </div>
         </div>
 

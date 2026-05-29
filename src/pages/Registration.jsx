@@ -1,9 +1,11 @@
 import { CreditCard, Check } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useToast } from '../hooks/useToast';
 
 const REGISTRATION_STORAGE_KEY = 'aiqsec_registration_selections';
 
 export function Registration() {
+  const { addToast } = useToast();
   const [region, setRegion] = useState(() => {
     if (typeof window === 'undefined') return 'india';
     const saved = localStorage.getItem(REGISTRATION_STORAGE_KEY);
@@ -63,7 +65,7 @@ export function Registration() {
   const handleProceedToPayment = () => {
     const mainCategory = getMainCategory();
     if (!mainCategory) {
-      alert('Please select a registration category (Student, Professional, or Attendee)');
+      addToast('Please select a registration category (Student, Professional, or Attendee)', 'error');
       return;
     }
 
@@ -146,7 +148,7 @@ export function Registration() {
           Conference <span className="text-blue-600">Registration</span>
         </h1>
         <p className="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
-          Select your registration category and complete the payment to secure your participation at AIQSEC 2026.
+          Select your registration category and complete the payment to secure your participation at AIQSEC 2027.
         </p>
       </div>
 

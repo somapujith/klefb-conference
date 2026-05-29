@@ -53,13 +53,13 @@ export function Footer() {
           <h4 className="font-semibold text-foreground mb-4" style={{ fontFamily: 'Helvetica, Arial, sans-serif' }}>Contact</h4>
           <ul className="space-y-2 text-sm">
             <li className="text-muted-foreground">aiqsec.connect@gmail.com</li>
-            <li className="text-muted-foreground">KL University, Bachupally</li>
+            <li className="text-muted-foreground">KLH University, Bachupally</li>
           </ul>
         </div>
       </div>
 
       <div className="container mx-auto px-4 mt-12 pt-8 border-t border-border/50 text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
-        <p>© 2026 KL University. All rights reserved.</p>
+        <p>© 2026 KLH University. All rights reserved.</p>
         <div className="flex gap-4 mt-4 md:mt-0">
           <a href="#" className="hover:text-slate-900 transition-colors">
             Privacy Policy

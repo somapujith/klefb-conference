@@ -72,7 +72,7 @@ export function HeroSection() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button href="/call-for-papers" variant="primary" testId="button-hero-cfp">
-              Submit Research
+              Submit Paper
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -94,6 +94,10 @@ export function HeroSection() {
               View Program
             </Button>
           </div>
+
+          <p className="mt-6 text-sm text-slate-500 font-light tracking-wide">
+            IEEE acceptance under process
+          </p>
         </div>
       </div>
     </section>

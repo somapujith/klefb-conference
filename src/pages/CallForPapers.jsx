@@ -1,4 +1,4 @@
-import { ExternalLink, FileText, Lightbulb, Database, Network, Settings, Cpu, Globe, Scale, Users, Info } from 'lucide-react';
+import { ExternalLink, FileText, Lightbulb, Database, Network, Settings, Cpu, Globe, Scale, Users, Info, Calendar, ArrowRight } from 'lucide-react';
 
 export function CallForPapers() {
   const tracks = [
@@ -53,7 +53,7 @@ export function CallForPapers() {
   ];
 
   return (
-    <div className="min-h-screen bg-white font-sans selection:bg-blue-100 selection:text-blue-900">
+    <div className="min-h-screen bg-amber-50 font-sans selection:bg-blue-100 selection:text-blue-900">
       
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 md:pt-56 md:pb-48 px-4 bg-gradient-to-b from-slate-50/80 to-white overflow-hidden">
@@ -148,28 +148,75 @@ export function CallForPapers() {
         </div>
       </section>
 
-      {/* CMT Acknowledgement - Floating sleek card */}
-      <section className="py-32 md:py-40 px-4 bg-white">
+      {/* Important Dates & Contribution CTA */}
+      <section className="px-4 pb-20">
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-slate-900 rounded-[2.5rem] p-10 md:p-16 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 text-center md:text-left shadow-2xl shadow-slate-900/20 relative overflow-hidden">
-            
-            {/* Decorative background element */}
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-slate-800 rounded-full blur-3xl opacity-50"></div>
-            
-            <div className="bg-slate-800/80 p-5 rounded-3xl shrink-0 relative z-10 backdrop-blur-sm border border-slate-700/50">
-              <Info className="w-8 h-8 text-blue-400" />
-            </div>
-            
-            <div className="relative z-10">
-              <h4 className="text-2xl font-bold text-white mb-4">CMT Acknowledgement</h4>
-              <p className="text-slate-300 text-lg leading-relaxed font-light">
-                The Microsoft CMT service was actively utilized for managing the comprehensive peer-reviewing process for this conference.
+          <div className="bg-slate-900 rounded-[2.5rem] p-10 md:p-16 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-16">
+
+            {/* Background Glow */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[100px] opacity-20 translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+
+            {/* Left Content */}
+            <div className="w-full md:w-1/2 relative z-10 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 bg-transparent text-white px-4 py-1.5 rounded-full border border-white/50 uppercase tracking-widest text-[10px] font-bold mb-6">
+                <Calendar className="w-3 h-3" />
+                Call for Papers Open
+              </div>
+
+              <h2 className="heading-large text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
+                Contribute<br/>
+                <span className="text-blue-400">Your Vision</span>
+              </h2>
+
+              <p className="text-slate-400 mb-10 leading-relaxed text-lg">
+                Join the elite research consortium and showcase your exclusive breakthroughs to the world.
               </p>
+
+              <button className="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 w-full sm:w-auto flex items-center justify-center md:justify-start gap-3 shadow-[0_8px_25px_rgb(37,99,235,0.3)] hover:shadow-[0_12px_35px_rgb(37,99,235,0.4)] hover:-translate-y-0.5">
+                Submit Your Paper
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
-            
+
+            {/* Right Dates Timeline */}
+            <div className="w-full md:w-1/2 relative z-10 flex flex-col gap-6">
+              <p className="text-slate-400 text-sm mb-4 text-center md:text-right uppercase tracking-widest font-bold text-[11px]">Important Dates for AIQSEC 2027</p>
+
+              {/* Date 1 */}
+              <div className="flex items-center justify-between border border-slate-700/50 bg-slate-800/40 backdrop-blur-md p-6 rounded-2xl hover:bg-slate-800/80 transition-colors">
+                <div className="text-left">
+                  <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Paper Submission</div>
+                  <div className="text-white font-medium">Deadline</div>
+                </div>
+                <div className="text-2xl font-bold text-white">APRIL 27</div>
+              </div>
+
+              {/* Date 2 */}
+              <div className="flex items-center justify-between border border-slate-700/50 bg-slate-800/40 backdrop-blur-md p-6 rounded-2xl hover:bg-slate-800/80 transition-colors">
+                <div className="text-left">
+                  <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Author Notification</div>
+                  <div className="text-white font-medium">Acceptance</div>
+                </div>
+                <div className="text-2xl font-bold text-white">MAY 22</div>
+              </div>
+
+              {/* Date 3 */}
+              <div className="flex items-center justify-between border border-slate-700/50 bg-slate-800/40 backdrop-blur-md p-6 rounded-2xl hover:bg-slate-800/80 transition-colors">
+                <div className="text-left">
+                  <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Conference</div>
+                  <div className="text-white font-medium">Event Dates</div>
+                </div>
+                <div className="text-2xl font-bold text-white">AUG 20-21</div>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </section>
+
+      {/* Spacer to push footer down */}
+      <div className="h-[30px]"></div>
 
     </div>
   );

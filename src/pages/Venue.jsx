@@ -88,12 +88,8 @@ export function Venue() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
             <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold tracking-widest uppercase mb-8">
-                <MapPin className="w-3.5 h-3.5" />
-                Main Campus
-              </div>
               <h2 className="heading-large text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                KL University Hyderabad Campus
+                KLH University Bachupally Campus
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-8">
                 Located in the fast-growing educational and technology corridor of Hyderabad, the KL University Hyderabad Campus beautifully provides an excellent environment for hosting international academic and technology conferences.
@@ -117,7 +113,7 @@ export function Venue() {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900">Dates</h4>
-                    <p className="text-slate-500 text-sm">October 16 - 17, 2026</p>
+                    <p className="text-slate-500 text-sm">August 20 - 21, 2027</p>
                   </div>
                 </div>
               </div>
@@ -180,54 +176,54 @@ export function Venue() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Air Travel */}
-            <div className="bg-white rounded-[2rem] p-10 border border-slate-100">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50">
+            <div className="bg-white rounded-[2rem] p-10 border border-slate-100 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50 mx-auto">
                 <Plane className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Air Travel</h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
-                  <span className="text-slate-500 leading-relaxed text-sm md:text-base">Rajiv Gandhi International Airport (RGIA) (30 mins)</span>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
+                  <span className="text-slate-500 leading-relaxed text-sm md:text-base">Rajiv Gandhi International Airport (RGIA) (2 hours)</span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
                   <span className="text-slate-500 leading-relaxed text-sm md:text-base">Direct flights from most major hubs across India</span>
                 </li>
               </ul>
             </div>
 
             {/* Public Transit */}
-            <div className="bg-white rounded-[2rem] p-10 border border-slate-100">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50">
+            <div className="bg-white rounded-[2rem] p-10 border border-slate-100 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50 mx-auto">
                 <Train className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Public Transit</h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
                   <span className="text-slate-500 leading-relaxed text-sm md:text-base">Secunderabad Railway Station (1.5 hours)</span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
                   <span className="text-slate-500 leading-relaxed text-sm md:text-base">TSRTC buses are easily available</span>
                 </li>
               </ul>
             </div>
 
             {/* Driving */}
-            <div className="bg-white rounded-[2rem] p-10 border border-slate-100">
-              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50">
+            <div className="bg-white rounded-[2rem] p-10 border border-slate-100 text-center">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-8 border border-blue-100/50 mx-auto">
                 <Car className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Driving</h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
                   <span className="text-slate-500 leading-relaxed text-sm md:text-base">Campus parking available</span>
                 </li>
-                <li className="flex items-start gap-4">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2.5 shrink-0"></div>
+                <li className="flex items-center justify-center gap-4">
+                  <div className="w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
                   <span className="text-slate-500 leading-relaxed text-sm md:text-base">Cab services easily available for local and inter-city travel</span>
                 </li>
               </ul>

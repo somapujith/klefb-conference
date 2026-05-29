@@ -61,7 +61,7 @@ export function Sponsorship() {
             Sponsorship <span className="text-blue-600">Levels</span>
           </h1>
           <p className="text-slate-500 text-lg leading-relaxed">
-            On behalf of the organising committee of AIQSEC 2026, it is our great pleasure to invite you to be a valued sponsor. We offer multiple tiers of sponsorship and exhibitor opportunities to elegantly promote your organization to a highly influential audience in Hyderabad, India.
+            On behalf of the organising committee of AIQSEC 2027, it is our great pleasure to invite you to be a valued sponsor. We offer multiple tiers of sponsorship and exhibitor opportunities to elegantly promote your organization to a highly influential audience in Hyderabad, India.
           </p>
         </div>
       </section>
