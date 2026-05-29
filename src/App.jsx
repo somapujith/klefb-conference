@@ -11,6 +11,8 @@ import { Themes } from './pages/Themes';
 import { Sponsorship } from './pages/Sponsorship';
 import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
+import { Registration } from './pages/Registration';
+import { Payment } from './pages/Payment';
 function App() {
   const pathname = window.location.pathname;
 
@@ -42,6 +44,12 @@ function App() {
       break;
     case '/contact':
       page = <Contact />;
+      break;
+    case '/registration':
+      page = <Registration />;
+      break;
+    case '/payment':
+      page = <Payment />;
       break;
     case '/404':
       page = <NotFound />;

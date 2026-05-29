@@ -165,4 +165,5 @@
   line-height: var(--typography-label-height, 1.4);
   letter-spacing: var(--typography-label-spacing, 0.5px);
   text-transform: uppercase;
+  border-radius: 9999px;
 }

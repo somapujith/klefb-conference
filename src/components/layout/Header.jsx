@@ -39,7 +39,7 @@ export function Header() {
 
         <div className="flex-shrink-0">
           <a
-            href="/call-for-papers"
+            href="/registration"
             data-testid="button-register"
             className="register-btn"
           >

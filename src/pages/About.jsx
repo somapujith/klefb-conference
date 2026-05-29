@@ -5,7 +5,7 @@ export function About() {
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-slate-900 selection:text-white">
       {/* Hero Section */}
-      <div className="pt-40 pb-32 px-4 border-b border-slate-200 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem]">
+      <div className="pt-40 pb-32 px-4 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem]">
         <div className="container mx-auto px-4 max-w-6xl text-center">
           <div className="label border border-slate-900 text-slate-900 bg-white inline-block px-4 py-1 mb-10">
             Conference 2027
