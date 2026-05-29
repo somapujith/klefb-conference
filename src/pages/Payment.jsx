@@ -1,4 +1,4 @@
-import { Lock, ArrowLeft, ShieldCheck, CheckCircle2, QrCode, AlertCircle } from 'lucide-react';
+import { Lock, ArrowLeft, ShieldCheck, CheckCircle2, QrCode, AlertCircle, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import './Payment.css';
 
@@ -76,6 +76,8 @@ export function Payment() {
 
   const [errors, setErrors] = useState({});
   const [successState, setSuccessState] = useState(false);
+  const [qrFullscreen, setQrFullscreen] = useState(false);
+  const [qrHovered, setQrHovered] = useState(false);
 
   // Save form data to localStorage
   useEffect(() => {
@@ -118,6 +120,62 @@ export function Payment() {
       setErrors(newErrors);
     }
   };
+
+  // Fullscreen QR Modal
+  if (qrFullscreen) {
+    return (
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.9)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 50
+        }}
+        onClick={() => setQrFullscreen(false)}
+      >
+        <div style={{ position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+          <button
+            onClick={() => setQrFullscreen(false)}
+            style={{
+              position: 'absolute',
+              top: '-3rem',
+              right: 0,
+              background: 'none',
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '2.5rem',
+              height: '2.5rem',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.transform = 'scale(1.1)'}
+            onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+          >
+            <X size={32} />
+          </button>
+          <img
+            src="/qr-code.jpg"
+            alt="UPI QR Code"
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: '1rem'
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
 
   // Success State
   if (successState) {
@@ -296,8 +354,19 @@ export function Payment() {
                   <div className="conditional-details">
                     {formData.paymentMethod === 'upi' && (
                       <div className="qr-section">
-                        <div className="qr-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '130px', minHeight: '130px', background: '#f9fafb', borderRadius: '0.75rem' }}>
-                          <QrCode size={64} color="#6b7280" />
+                        <div
+                          className="qr-container"
+                          style={{ cursor: 'pointer', position: 'relative' }}
+                          onClick={() => setQrFullscreen(true)}
+                          onMouseEnter={() => setQrHovered(true)}
+                          onMouseLeave={() => setQrHovered(false)}
+                        >
+                          <img src="/qr-code.jpg" alt="UPI QR Code" style={{ width: '140px', height: '140px', objectFit: 'contain' }} />
+                          {qrHovered && (
+                            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.4)', borderRadius: '0.75rem', transition: 'all 0.2s' }}>
+                              <span style={{ fontSize: '0.75rem', background: 'rgba(0,0,0,0.7)', color: 'white', padding: '0.5rem 0.75rem', borderRadius: '0.375rem', fontWeight: '500' }}>Click to enlarge</span>
+                            </div>
+                          )}
                         </div>
                         <div className="qr-text-container">
                           <h4 style={{ fontWeight: '600', marginBottom: '0.5rem' }}>Scan to Pay</h4>
