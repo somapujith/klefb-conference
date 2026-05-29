@@ -106,7 +106,7 @@ export function CallForPapers() {
       </section>
 
       {/* Technical Topics - Soft Shadows and generous padding */}
-      <section className="py-32 md:py-48 px-4 bg-slate-50/50">
+      <section className="py-32 md:py-48 px-4 bg-slate-50/50 -mt-[30px]">
         <div className="container mx-auto max-w-7xl">
           
           <div className="text-center mb-24 max-w-2xl mx-auto">
@@ -123,11 +123,11 @@ export function CallForPapers() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
             {tracks.map((track) => (
-              <div 
-                key={track.id} 
-                className="group bg-white p-10 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-500 flex flex-col h-full"
+              <div
+                key={track.id}
+                className="group bg-white p-10 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.03)] flex flex-col h-full"
               >
-                <div className="w-16 h-16 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl mb-10 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-500 shadow-sm">
+                <div className="w-16 h-16 flex items-center justify-center bg-blue-50 text-blue-600 rounded-2xl mb-10 shadow-sm">
                   {track.icon}
                 </div>
                 
