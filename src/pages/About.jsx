@@ -128,7 +128,7 @@ export function About() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-32">
             <h2 className="heading-large font-bold text-slate-900 mb-6">
-              IEEE Student Branches at KL University
+              IEEE Active Student Chapters at KLEFB SB
             </h2>
             <div className="h-px w-24 bg-slate-900 mx-auto mb-8"></div>
             <p className="body-large text-slate-600 max-w-3xl mx-auto">
@@ -168,7 +168,7 @@ export function About() {
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-32">
             <h2 className="heading-large font-bold text-slate-900 mb-6">
-              IEEE Affinity Groups
+              IEEE Affinity Groups at KLEFB SB
             </h2>
             <div className="h-px w-24 bg-slate-900 mx-auto mb-8"></div>
             <p className="body-large text-slate-600 max-w-3xl mx-auto">
