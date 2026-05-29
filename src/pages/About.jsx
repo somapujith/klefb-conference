@@ -55,8 +55,8 @@ export function About() {
         </div>
       </div>
 
-      {/* KL University Section */}
-      <div className="py-32 px-4 bg-slate-50 border-b border-slate-200">
+      {/* KL University Section - DISABLED */}
+      {/* <div className="py-32 px-4 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="order-2 md:order-1 relative p-4 bg-white border border-slate-200 shadow-sm">
@@ -92,7 +92,7 @@ export function About() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* IEEE Section */}
       <div className="py-32 px-4 bg-white border-b border-slate-200">
@@ -124,13 +124,13 @@ export function About() {
       </div>
 
       {/* Student Branches Section */}
-      <div className="py-32 px-4 bg-white border-b border-slate-200">
+      <div className="py-40 md:py-48 px-4 bg-white">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-20">
-            <h2 className="heading-large font-bold text-slate-900 mb-4">
+          <div className="text-center mb-32">
+            <h2 className="heading-large font-bold text-slate-900 mb-6">
               IEEE Student Branches at KL University
             </h2>
-            <div className="h-px w-24 bg-slate-900 mx-auto mb-6"></div>
+            <div className="h-px w-24 bg-slate-900 mx-auto mb-8"></div>
             <p className="body-large text-slate-600 max-w-3xl mx-auto">
               We host multiple IEEE Student Branches dedicated to different technical domains, providing students with specialized knowledge and professional development opportunities.
             </p>
@@ -143,18 +143,18 @@ export function About() {
               { logo: '/IEEE-IAS-Logo.webp', name: 'IAS', desc: 'Industry Applications Society - Bridging theory and practical applications' },
               { logo: '/SMC.jpg', name: 'SMC', desc: 'Systems, Man, and Cybernetics Society - Systems science and engineering excellence' },
             ].map((branch, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
-                <div className="w-32 h-32 mb-6 flex items-center justify-center bg-white rounded-xl">
+              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center h-full">
+                <div className="w-32 h-32 mb-8 flex items-center justify-center">
                   <img
                     src={branch.logo}
                     alt={branch.name}
-                    className="w-full h-full object-contain p-2"
+                    className="w-full h-full object-contain"
                   />
                 </div>
-                <h3 className="subheading-medium font-bold text-slate-900 mb-3">
+                <h3 className="font-bold text-slate-900 mb-4 text-lg">
                   {branch.name}
                 </h3>
-                <p className="body-small text-slate-600">
+                <p className="text-slate-600 text-sm leading-relaxed">
                   {branch.desc}
                 </p>
               </div>
@@ -164,13 +164,13 @@ export function About() {
       </div>
 
       {/* Affinity Groups Section */}
-      <div className="py-32 px-4 bg-white border-b border-slate-200">
+      <div className="py-40 md:py-48 px-4 bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-20">
-            <h2 className="heading-large font-bold text-slate-900 mb-4">
+          <div className="text-center mb-32">
+            <h2 className="heading-large font-bold text-slate-900 mb-6">
               IEEE Affinity Groups
             </h2>
-            <div className="h-px w-24 bg-slate-900 mx-auto mb-6"></div>
+            <div className="h-px w-24 bg-slate-900 mx-auto mb-8"></div>
             <p className="body-large text-slate-600 max-w-3xl mx-auto">
               Our affinity groups support professional communities and promote diversity, inclusion, and equal opportunity within IEEE.
             </p>
