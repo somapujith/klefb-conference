@@ -1,4 +1,5 @@
 import './index.css';
+import { useState, useEffect } from 'react';
 import { MainLayout } from './components/layout/MainLayout';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
@@ -13,8 +14,40 @@ import { Contact } from './pages/Contact';
 import { NotFound } from './pages/NotFound';
 import { Registration } from './pages/Registration';
 import { Payment } from './pages/Payment';
+import { AdminLogin } from './pages/AdminLogin';
+import { AdminDashboard } from './pages/AdminDashboard';
 function App() {
   const pathname = window.location.pathname;
+  const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
+    return localStorage.getItem('adminAuth') === 'true';
+  });
+
+  const handleAdminLogin = () => {
+    setIsAdminLoggedIn(true);
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('adminAuth');
+    setIsAdminLoggedIn(false);
+    window.location.href = '/admin';
+  };
+
+  // Admin routes
+  if (pathname === '/admin') {
+    if (isAdminLoggedIn) {
+      window.location.href = '/admin/dashboard';
+      return null;
+    }
+    return <AdminLogin onLogin={handleAdminLogin} />;
+  }
+
+  if (pathname === '/admin/dashboard') {
+    if (!isAdminLoggedIn) {
+      window.location.href = '/admin';
+      return null;
+    }
+    return <AdminDashboard onLogout={handleAdminLogout} />;
+  }
 
   let page;
   switch (pathname) {

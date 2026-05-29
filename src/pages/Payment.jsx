@@ -1,5 +1,6 @@
 import { Lock, ArrowLeft, ShieldCheck, CheckCircle2, QrCode, AlertCircle, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { savePayment } from '../utils/supabaseClient';
 import './Payment.css';
 
 const STORAGE_KEY = 'aiqsec_payment_form';
@@ -105,17 +106,23 @@ export function Payment() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
 
     if (Object.keys(newErrors).length === 0) {
-      setSuccessState(true);
-      setTimeout(() => {
-        localStorage.removeItem(STORAGE_KEY);
-        localStorage.removeItem(REGISTRATION_STORAGE_KEY);
-        // Could redirect here: window.location.href = '/confirmation';
-      }, 2000);
+      const result = await savePayment(formData);
+
+      if (result.success) {
+        setSuccessState(true);
+        setTimeout(() => {
+          localStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(REGISTRATION_STORAGE_KEY);
+          // Could redirect here: window.location.href = '/confirmation';
+        }, 2000);
+      } else {
+        setErrors({ submit: `Failed to save payment: ${result.error}` });
+      }
     } else {
       setErrors(newErrors);
     }
@@ -429,6 +436,22 @@ export function Payment() {
 
                 {/* Submit */}
                 <div className="submit-section">
+                  {errors.submit && (
+                    <div style={{
+                      background: '#fee2e2',
+                      border: '1px solid #fecaca',
+                      borderRadius: '0.75rem',
+                      padding: '1rem',
+                      marginBottom: '1rem',
+                      display: 'flex',
+                      gap: '0.75rem'
+                    }}>
+                      <AlertCircle size={20} color="#dc2626" style={{ flexShrink: 0 }} />
+                      <p style={{ fontSize: '0.875rem', color: '#991b1b' }}>
+                        {errors.submit}
+                      </p>
+                    </div>
+                  )}
                   <button type="submit" className="submit-btn">
                     <CheckCircle2 size={18} className="submit-icon" />
                     Confirm Payment
