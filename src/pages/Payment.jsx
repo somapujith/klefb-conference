@@ -209,7 +209,7 @@ export function Payment() {
               Transaction Successful!
             </h2>
             <p style={{ fontSize: '1rem', color: '#6b7280', marginBottom: '2rem', lineHeight: '1.625' }}>
-              Your payment for <span style={{ fontWeight: '600' }}>{formData.total}</span> has been processed successfully. A confirmation email has been sent to <span style={{ fontWeight: '600' }}>{formData.email}</span>.
+              Your payment for <span style={{ fontWeight: '600' }}>{formData.total}</span> has been processed successfully.
             </p>
             <div style={{
               background: '#f0fdf4',
