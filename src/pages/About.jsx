@@ -94,6 +94,110 @@ export function About() {
         </div>
       </div>
 
+      {/* IEEE Section */}
+      <div className="py-32 px-4 bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="space-y-12">
+              <div>
+                <h2 className="heading-large font-bold text-slate-900 mb-8">
+                  IEEE - The World's Largest Technical Professional Organization
+                </h2>
+                <div className="h-px w-24 bg-slate-900 mb-8"></div>
+                <p className="body-large text-slate-600 mb-6">
+                  The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest technical professional organization dedicated to advancing technology for humanity. With over 400,000 members across 160 countries, IEEE drives innovation in electrical engineering, computer science, and related disciplines.
+                </p>
+                <p className="body-large text-slate-600">
+                  IEEE's mission is to foster technological innovation and excellence while promoting professional development, advancing global community awareness, and enhancing the quality of life for all people through its members, volunteers, and partners.
+                </p>
+              </div>
+            </div>
+            <div className="order-2 md:order-1 relative p-4 bg-white border border-slate-200 shadow-sm">
+              <img
+                src="/ieee-logo.svg"
+                alt="IEEE Logo"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Student Branches Section */}
+      <div className="py-32 px-4 bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="heading-large font-bold text-slate-900 mb-4">
+              IEEE Student Branches at KL University
+            </h2>
+            <div className="h-px w-24 bg-slate-900 mx-auto mb-6"></div>
+            <p className="body-large text-slate-600 max-w-3xl mx-auto">
+              We host multiple IEEE Student Branches dedicated to different technical domains, providing students with specialized knowledge and professional development opportunities.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { logo: '/comsoc.png', name: 'COMSOC', desc: 'Communications Society - Advancing communications and information distribution technologies' },
+              { logo: '/IEEE_Computer.png', name: 'CS', desc: 'Computer Society - Driving innovation in computing technology and systems' },
+              { logo: '/IEEE-IAS-Logo.webp', name: 'IAS', desc: 'Industry Applications Society - Bridging theory and practical applications' },
+              { logo: '/SMC.jpg', name: 'SMC', desc: 'Systems, Man, and Cybernetics Society - Systems science and engineering excellence' },
+            ].map((branch, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+                <div className="w-32 h-32 mb-6 flex items-center justify-center bg-white rounded-xl">
+                  <img
+                    src={branch.logo}
+                    alt={branch.name}
+                    className="w-full h-full object-contain p-2"
+                  />
+                </div>
+                <h3 className="subheading-medium font-bold text-slate-900 mb-3">
+                  {branch.name}
+                </h3>
+                <p className="body-small text-slate-600">
+                  {branch.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Affinity Groups Section */}
+      <div className="py-32 px-4 bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="heading-large font-bold text-slate-900 mb-4">
+              IEEE Affinity Groups
+            </h2>
+            <div className="h-px w-24 bg-slate-900 mx-auto mb-6"></div>
+            <p className="body-large text-slate-600 max-w-3xl mx-auto">
+              Our affinity groups support professional communities and promote diversity, inclusion, and equal opportunity within IEEE.
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-slate-50 p-12 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col md:flex-row items-center gap-12">
+              <div className="w-32 h-32 flex-shrink-0 flex items-center justify-center bg-white rounded-xl border border-slate-200">
+                <img
+                  src="/WIE.webp"
+                  alt="WIE - Women in Engineering"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
+              <div className="flex-grow text-center md:text-left">
+                <h3 className="heading-medium font-bold text-slate-900 mb-4">
+                  WIE - Women in Engineering
+                </h3>
+                <p className="body-large text-slate-600">
+                  IEEE Women in Engineering (WIE) is dedicated to promoting women engineers and scientists, inspiring girls around the world to achieve their career and life goals. WIE advocates for equality, demonstrates the value of diversity and inclusion, and builds community among IEEE members to enhance the contribution of women to the engineering profession.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Why Attend Section */}
       <div className="py-32 px-4 bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 max-w-7xl">
