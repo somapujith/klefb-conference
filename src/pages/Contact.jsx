@@ -2,7 +2,7 @@ import { MapPin, Mail, Phone, Clock, ExternalLink } from 'lucide-react';
 
 export function Contact() {
   return (
-    <div className="bg-white pb-20">
+    <div className="bg-white pb-32">
       {/* Hero Section */}
       <section className="bg-white pt-40 pb-32 text-center">
         <h1 

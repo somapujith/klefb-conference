@@ -5,10 +5,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/60 backdrop-blur-xl supports-[backdrop-filter]:bg-white/40 overflow-hidden text-slate-900">
       <div className="container mx-auto px-7 h-20 flex items-center justify-between">
-        <div className="flex-shrink-0">
-          <a
-            href="/"
-            className="flex items-center gap-2 group"
+        <div className="flex-shrink-0" style={{ marginLeft: '-90px' }}>
+          <div
+            className="flex items-center gap-3"
             data-testid="link-home"
           >
             <img
@@ -16,7 +15,12 @@ export function Header() {
               className="h-14 w-auto object-contain"
               src="/klh.png"
             />
-          </a>
+            <img
+              alt="IEEE"
+              className="h-10 w-auto object-contain"
+              src="/ieee-logo.svg"
+            />
+          </div>
         </div>
 
         <nav className="hidden md:flex flex-1 items-center justify-center gap-10">
