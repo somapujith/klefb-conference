@@ -179,6 +179,7 @@ export function Themes() {
 
             {/* Right Dates Timeline */}
             <div className="w-full md:w-1/2 relative z-10 flex flex-col gap-6">
+              <p className="text-slate-400 text-sm mb-4 text-center md:text-right uppercase tracking-widest font-bold text-[11px]">Important Dates for AIQSEC 2027</p>
               
               {/* Date 1 */}
               <div className="flex items-center justify-between border border-slate-700/50 bg-slate-800/40 backdrop-blur-md p-6 rounded-2xl hover:bg-slate-800/80 transition-colors">
@@ -186,7 +187,7 @@ export function Themes() {
                   <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Paper Submission</div>
                   <div className="text-white font-medium">Deadline</div>
                 </div>
-                <div className="text-2xl font-bold text-white">MAY 15</div>
+                <div className="text-2xl font-bold text-white">APRIL 27</div>
               </div>
 
               {/* Date 2 */}
@@ -201,10 +202,10 @@ export function Themes() {
               {/* Date 3 */}
               <div className="flex items-center justify-between border border-slate-700/50 bg-slate-800/40 backdrop-blur-md p-6 rounded-2xl hover:bg-slate-800/80 transition-colors">
                 <div className="text-left">
-                  <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Camera Ready</div>
-                  <div className="text-white font-medium">Final Paper</div>
+                  <div className="text-slate-400 text-[10px] uppercase tracking-widest font-bold mb-1">Conference</div>
+                  <div className="text-white font-medium">Event Dates</div>
                 </div>
-                <div className="text-2xl font-bold text-white">JULY 20</div>
+                <div className="text-2xl font-bold text-white">AUG 20-21</div>
               </div>
 
             </div>
